@@ -22,15 +22,42 @@ namespace winFormProj
 
         }
 
+        void mc_OnpropertyChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("The property has been changed");
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            // openfileDialogs
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "文本|*.txt|图片|*.jpg";
+            ofd.Title = "OpenFileDialogTest";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(ofd.FileName);
+            }
+
             ///// class
             MyClass mc = new MyClass("Vanoa");
+            //delegates
+            mc.showDelegateMsgs();
+            //event
+            mc.OnPropertyChanged += new EventHandler(mc_OnpropertyChanged);
+            mc.eventName = "eventTest";
+            //indexers
+            MessageBox.Show(mc[1]);
+            mc[1] = "none";
+            MessageBox.Show(mc[1]);
+
             MessageBox.Show("My name is " + mc.GetName());
             // static access
             MyClass.showMsg("I love you");
-            mc.Name = "hello";
+            //mc.Name = "hello";    //set属性是private的
             MessageBox.Show("Now My name is " + mc.Name);
+
+            MySecondClass mc2 = new MySecondClass();
+            mc2.MyVoid();
 
             ///// try catch
             //try
