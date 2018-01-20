@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using MyNameSpace;
 // 文件操作
 using System.IO;
+//
+using System.Diagnostics;
+using System.Threading;
 
 
 namespace winFormProj
@@ -32,7 +35,80 @@ namespace winFormProj
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //convert Bitconvert 基础类型转换，区别在于BitConvert是将基础类型转为byte数组
+            OpenFileDialog ofd1 = new OpenFileDialog();
+            if (ofd1.ShowDialog() == DialogResult.OK)
+            {
+                //File.class
+                //Path class
+
+                ///////process class
+                //Process.Start("notepad.exe");
+                //MessageBox.Show(Process.GetCurrentProcess().ProcessName);
+                //Process.GetCurrentProcess().Kill();
+
+                Process[] ps = Process.GetProcesses();
+                foreach (Process p in ps)
+                {
+                    if (!p.Responding)
+                    {
+                        p.Kill();
+                    }
+                }
+
+                Process.GetProcessesByName("chrome");
+                
+            }
+
+            // folderBrowserDialog
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.RootFolder = Environment.SpecialFolder.MyDocuments;
+            fbd.Description = "My fbd test";
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                //Directory class
+                //只获取目录下的文件
+                string [] files = Directory.GetFiles(fbd.SelectedPath.ToString());
+                // 获取目录
+                string[] dirs = Directory.GetDirectories(fbd.SelectedPath.ToString());
+                //获取盘符
+                string[] drives = Directory.GetLogicalDrives();
+
+                //创建
+                Directory.CreateDirectory(fbd.SelectedPath + "\\test");
+                //Directory.Move();   //mv
+
+                MessageBox.Show(fbd.SelectedPath.ToString());
+            }
+
+            //substring
+            string subTest = "vanora aery    ";
+            string s = subTest.Substring(0, 6);
+            // indexof
+            int i = subTest.IndexOf(" ");
+            //Trim
+            s = subTest.Trim();
+            //remove
+            s = subTest.Remove(6);
+            //replace
+            s = subTest.Replace("a", "_");
+            //Split
+            string []ss = s.Split('_');
+            //ToCharArray 转换为Unicode数组
+            char []cc = "周ssda".ToCharArray();
+
+            //math
+            string nu = Math.Pow(2, 3).ToString();
+
+            //random
+            Random r = new Random();
+            r.Next();
+            r.Next(0, 100);
+            
+            //生成随机字符串
+            char[] letters = "0123456789abcdefghijkASDFGHJKL-_=+".ToCharArray();
+            //利用random生成随机数作为下标，获取随机字符串
+
+            //convert Bitconvert 基础类型转换，区别在于BitConvert是将基础类型转为byte数组或者相反的转换
 
             // is as casting
             // is 关键字用于判断是否属于某种类型
@@ -210,6 +286,47 @@ namespace winFormProj
                 //bw.Write("SaveFileDialog Test.");
                 bw.Dispose();
             }
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        Thread t;
+        Thread t1;
+        string mmm;
+        private void button5_Click(object sender, EventArgs e)
+        {
+            t = new Thread(MyFreeze);
+            t.Start();
+
+            object[] parm = { "name", 20};
+            t1 = new Thread(write);
+            t1.Start(parm);
+
+            while (t1.IsAlive) ;
+            textBox3.Text = mmm;
+        }
+
+        // 这里的参数只能是object
+        void write(object array)
+        {
+            object[] o = array as object[];
+            for (int i = 0; i < Convert.ToInt32(o[1]); i++)
+            {
+                mmm += o[0].ToString() + ": " + i + "\r\n";
+            }
+        }
+
+        void MyFreeze()
+        {
+            for (; ; ) ;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            t.Abort();
         }
         //////////////////
     }
