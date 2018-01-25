@@ -12,6 +12,10 @@ using System.IO;
 //
 using System.Diagnostics;
 using System.Threading;
+//net
+using System.Net;
+//media
+using System.Media;
 
 
 namespace winFormProj
@@ -25,7 +29,8 @@ namespace winFormProj
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            WebClient wb = new WebClient();
+            textBox4.Text = wb.DownloadString("https://raw.githubusercontent.com/zhouwh1989/learn_c-/master/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/Form1.cs");
         }
 
         void mc_OnpropertyChanged(object sender, EventArgs e)
@@ -326,8 +331,137 @@ namespace winFormProj
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            t.Abort();
+            if(t!=null && t.IsAlive)
+                t.Abort();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Text File|*.txt";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                WebClient wb = new WebClient();
+                wb.DownloadFileAsync(new Uri("https://github.com/zhouwh1989/learn_c-/blob/master/README.md"), sfd.FileName);
+
+                wb.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wb_DownloadStringCompleted);
+                wb.DownloadFileCompleted += new AsyncCompletedEventHandler(wb_DownloadFileCompleted);
+                wb.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wb_DownloadProgressChanged);
+            }
+        }
+
+        void wb_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            MessageBox.Show("Download progress changed! " + e.ProgressPercentage.ToString());
+        }
+
+        void wb_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            MessageBox.Show("Download File success!");
+        }
+
+        void wb_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            MessageBox.Show("downloadString success!");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DateTime dt = new DateTime(2018,1,23,2,23,32);
+            MessageBox.Show(dt.ToString());
+            DateTime dt1 = DateTime.Now;
+            MessageBox.Show(dt1.ToString());
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fdl = new OpenFileDialog();
+            if (fdl.ShowDialog() == DialogResult.OK)
+            {
+                //Image img = Image.FromFile(fdl.FileName);
+                //pictureBox1.Image = img;
+                //pictureBox1.ImageLocation = fdl.FileName;
+                pictureBox1.ImageLocation = "https://www.google.com.hk/logos/doodles/2018/virginia-woolfs-136th-birthday-5857012284915712.6-l.png";
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ColorDialog cdl = new ColorDialog();
+            cdl.AnyColor = true;
+            cdl.SolidColorOnly = true;
+            cdl.ShowHelp = true;
+            cdl.FullOpen = true;
+            cdl.AllowFullOpen = false;
+            cdl.HelpRequest += new EventHandler(cdl_HelpRequest);
+            if (cdl.ShowDialog() == DialogResult.OK)
+            {
+                button9.BackColor = cdl.Color;
+                //KnownColor
+                Color c = cdl.Color;
+                if (c.IsNamedColor)
+                    MessageBox.Show(c.Name);
+            }
+        }
+
+        void cdl_HelpRequest(object sender, EventArgs e)
+        {
+            MessageBox.Show("help pressed!!");
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            FontDialog fd = new FontDialog();
+            fd.ShowColor = true;
+            fd.ShowHelp = true;
+            fd.HelpRequest += new EventHandler(fd_HelpRequest);
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                textBox5.Font = fd.Font;
+            }
+        }
+
+        void fd_HelpRequest(object sender, EventArgs e)
+        {
+            MessageBox.Show("font help pressed!!");
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            textBox6.Text += DateTime.Now.ToString() + Environment.NewLine;
+            textBox6.SelectionStart = textBox6.Text.Length;
+            textBox6.ScrollToCaret();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opd = new OpenFileDialog();
+            if (opd.ShowDialog() == DialogResult.OK)
+            {
+                // play wav file
+                SoundPlayer sp = new SoundPlayer(opd.FileName);
+                sp.Play();
+            }
+
+            //SystemSounds
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.Show();
+            //f.ShowDialog();       //不可再操作之前的窗体
+            f.FormTestshow();
+        }
+
         //////////////////
     }
 }
