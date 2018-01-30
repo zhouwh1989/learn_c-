@@ -462,6 +462,114 @@ namespace winFormProj
             f.FormTestshow();
         }
 
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Form f = new Form2();
+            f.IsMdiContainer = true;
+            f.Show();
+
+            Form f1 = new Form2();
+            f1.MdiParent = f;
+            f1.Show();
+
+            Form f2 = new Form2();
+            f2.MdiParent = f;
+            f2.Show();
+
+            f.LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "2222")
+            {
+                MessageBox.Show("you guessed...");
+            }
+            comboBox1.Items[0] = "atom";
+            comboBox1.Items.Add("steve");
+            MessageBox.Show(comboBox1.Items.Count.ToString());
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(comboBox1.Text);
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            //if (progressBar1.Value >= 100)
+            //{
+            //    progressBar1.Value = 0;
+            //}
+            //progressBar1.Value += 10;
+
+            progressBar1.Style = ProgressBarStyle.Marquee;
+            progressBar1.MarqueeAnimationSpeed = 100;
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            progressBar1.Style = ProgressBarStyle.Blocks;
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            ListViewItem lvi = new ListViewItem(textBox7.Text);
+            lvi.SubItems.Add(textBox8.Text);
+            lvi.SubItems.Add(textBox9.Text);
+            listView1.Items.Add(lvi);
+            textBox7.Text = "";
+            textBox8.Text = "";
+            textBox9.Text = "";
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // 不管是选中了哪一行，只显示第一行的
+            if (listView1.SelectedItems.Count != 0)
+            {
+                MessageBox.Show(listView1.SelectedItems[0].SubItems[0].Text);
+            }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count != 0)
+            {
+                foreach (ListViewItem lvit in listView1.SelectedItems)
+                {
+                    MessageBox.Show(lvit.SubItems[0].Text);
+                }
+                
+            }
+        }
+
+        private void 删除选中行ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count != 0)
+            {
+                foreach (ListViewItem lvit in listView1.SelectedItems)
+                {
+                    lvit.Remove();
+                }
+
+            }
+        }
+
+        private void 删除所有行ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.Clear();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem lvit in listView1.Items)
+            {
+                if(lvit.Checked)
+                    lvit.Remove();
+            }
+        }
+
         //////////////////
     }
 }

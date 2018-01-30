@@ -58,7 +58,33 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button18 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除选中行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除所有行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button19 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -320,11 +346,234 @@
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(480, 308);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(75, 23);
+            this.button14.TabIndex = 26;
+            this.button14.Text = "MDI_test";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(600, 307);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(85, 23);
+            this.button15.TabIndex = 27;
+            this.button15.Text = "combox_test";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1111",
+            "2222",
+            "3333",
+            "4444"});
+            this.comboBox1.Location = new System.Drawing.Point(600, 332);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(109, 20);
+            this.comboBox1.TabIndex = 28;
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(455, 363);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 29;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(455, 341);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(127, 23);
+            this.button16.TabIndex = 30;
+            this.button16.Text = "progress_bar_test";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(455, 386);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(108, 23);
+            this.button17.TabIndex = 31;
+            this.button17.Text = "reset_progress";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button19);
+            this.groupBox1.Controls.Add(this.listView1);
+            this.groupBox1.Controls.Add(this.button18);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.textBox9);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.textBox8);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Location = new System.Drawing.Point(13, 376);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(403, 274);
+            this.groupBox1.TabIndex = 32;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "ListViewTest";
+            // 
+            // listView1
+            // 
+            this.listView1.CheckBoxes = true;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(17, 83);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(370, 149);
+            this.listView1.TabIndex = 7;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "全名";
+            this.columnHeader1.Width = 112;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "年龄";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "邮箱";
+            this.columnHeader3.Width = 194;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.删除选中行ToolStripMenuItem,
+            this.删除所有行ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 92);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(312, 53);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(75, 23);
+            this.button18.TabIndex = 6;
+            this.button18.Text = "添加";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 60);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "邮箱";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(46, 55);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(247, 21);
+            this.textBox9.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(233, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "年龄";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(264, 27);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(133, 21);
+            this.textBox8.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "全名";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(46, 31);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(133, 21);
+            this.textBox7.TabIndex = 0;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem1.Text = "显示选中行的名字";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem2.Text = "显示选中多行的名字";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // 删除选中行ToolStripMenuItem
+            // 
+            this.删除选中行ToolStripMenuItem.Name = "删除选中行ToolStripMenuItem";
+            this.删除选中行ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.删除选中行ToolStripMenuItem.Text = "删除选中行";
+            this.删除选中行ToolStripMenuItem.Click += new System.EventHandler(this.删除选中行ToolStripMenuItem_Click);
+            // 
+            // 删除所有行ToolStripMenuItem
+            // 
+            this.删除所有行ToolStripMenuItem.Name = "删除所有行ToolStripMenuItem";
+            this.删除所有行ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.删除所有行ToolStripMenuItem.Text = "删除所有行";
+            this.删除所有行ToolStripMenuItem.Click += new System.EventHandler(this.删除所有行ToolStripMenuItem_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(271, 239);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(116, 23);
+            this.button19.TabIndex = 8;
+            this.button19.Text = "delete_selected";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(715, 406);
+            this.ClientSize = new System.Drawing.Size(715, 662);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.button17);
+            this.Controls.Add(this.button16);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.button15);
+            this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.textBox6);
@@ -356,6 +605,9 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,6 +644,30 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 删除选中行ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除所有行ToolStripMenuItem;
+        private System.Windows.Forms.Button button19;
 
 
     }
