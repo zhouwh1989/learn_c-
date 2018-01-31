@@ -570,6 +570,57 @@ namespace winFormProj
             }
         }
 
+        private void button20_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            notifyIcon1.ShowBalloonTip(5000, "Notify", "I am still here", ToolTipIcon.Info);
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            treeView1.Nodes.Add("people");
+            treeView1.Nodes.Add("animal");
+            treeView1.Nodes[0].Nodes.Add("Tom");
+            treeView1.Nodes[0].Nodes.Add("Any");
+            TreeNode tn = new TreeNode();
+            tn.Text = "ImgTest";
+            tn.ImageIndex = 0;
+            tn.SelectedImageIndex = 0;
+            treeView1.Nodes[0].Nodes.Add(tn);
+            treeView1.Nodes[0].Nodes.Add("Bob");
+            treeView1.Nodes[1].Nodes.Add("Cat");
+            treeView1.Nodes[1].Nodes.Add("Dog");
+            treeView1.Nodes[1].Nodes[1].Nodes.Add("Spark");
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            ////删除选中的节点
+            //treeView1.SelectedNode.Remove();
+            ////删除所有节点
+            //treeView1.Nodes.Clear();
+            ////用checkBox支持多选，删除选中节点
+            RemoveChecked(treeView1.Nodes);
+        }
+        List<TreeNode> tnlist = new List<TreeNode>();
+        void RemoveChecked(TreeNodeCollection tnc)
+        {
+            foreach (TreeNode tn in tnc)
+            {
+                if (tn.Checked) tnlist.Add(tn);
+                else if (tn.Nodes.Count != 0)
+                    RemoveChecked(tn.Nodes);
+            }
+
+            foreach (TreeNode tn in tnlist)
+                treeView1.Nodes.Remove(tn);
+        }
+
         //////////////////
     }
 }
